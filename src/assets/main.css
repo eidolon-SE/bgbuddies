@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+    background: #494949;
+    font-family: 'Inter', sans-serif;
+}
+
+#app {
+    max-width: 1280px;
+    margin: 0 auto;
+    font-weight: normal;
+}
+
