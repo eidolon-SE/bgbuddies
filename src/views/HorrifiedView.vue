@@ -6,8 +6,8 @@
 <template>
     <ViewLayout>
         <template v-slot:nav>
-            <RouterLink to="characters">Character Picker</RouterLink>
-            <RouterLink to="monsters">Monster Picker</RouterLink>
+            <RouterLink :to="{ name: 'horrified_chars' }">Character Picker</RouterLink>
+            <RouterLink :to="{ name: 'horrified_mons' }">Monster Picker</RouterLink>
         </template>
     </ViewLayout>
 </template>

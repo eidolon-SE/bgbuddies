@@ -18,11 +18,13 @@ export const routes = [
             { 
                 path: 'characters', 
                 component: HorrifiedCharacterPickerView,
+                name: 'horrified_chars',
                 alias: ''
             },
             { 
                 path: 'monsters', 
                 component: HorrifiedMonsterPickerView,
+                name: 'horrified_mons',
             }
         ],
     },
@@ -35,6 +37,7 @@ export const routes = [
             {
                 path: 'score',
                 component: ScytheScoreCalculatorView,
+                name: 'scythe_scorecalc',
                 alias: '',
             },
         ]

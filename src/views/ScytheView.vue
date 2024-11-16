@@ -6,8 +6,7 @@
 <template>
     <ViewLayout>
         <template v-slot:nav>
-            <RouterLink to="score">Score Calculator</RouterLink>
-            <RouterLink to="characters">Character Picker</RouterLink>
+            <RouterLink :to="{ name: 'scythe_scorecalc' }">Score Calculator</RouterLink>
         </template>
     </ViewLayout>
 </template>

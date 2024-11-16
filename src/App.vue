@@ -5,7 +5,7 @@ import { routes } from './router'
 const router = useRouter()
 
 function changeGame(event) {
-    router.push({ name: event.target.value })
+    router.push(event.target.value)
 }
 </script>
 
@@ -14,7 +14,7 @@ function changeGame(event) {
         <h1 class="heading">Board Game Buddies</h1>
         <select name="game" class="game-list" @change="changeGame">
             <option value="/">Select a game...</option>
-            <option v-for="route in routes" :value="route.name">{{ route.meta.verbose }}</option>
+            <option v-for="route in routes" :value="route.path">{{ route.meta.verbose }}</option>
         </select>
     </header>
     <RouterView />
