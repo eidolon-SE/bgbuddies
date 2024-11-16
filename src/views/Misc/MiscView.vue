@@ -6,7 +6,7 @@
 <template>
     <ViewLayout>
         <template v-slot:nav>
-            <RouterLink to="">Dice Roller</RouterLink>
+            <RouterLink :to="{ name: 'misc_diceroll' }">Dice Roller</RouterLink>
         </template>
     </ViewLayout>
 </template>
