@@ -1,4 +1,4 @@
-import MiscView from '../views/MiscView.vue'
+import MiscView from '../views/Misc/MiscView.vue'
 
 export const MiscRoutes = {
     path: '/misc',

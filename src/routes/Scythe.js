@@ -1,5 +1,5 @@
-import ScytheView from '../views/ScytheView.vue'
-import ScytheScoreCalculatorView from '../views/ScytheScoreCalculatorView.vue'
+import ScytheView from '../views/Scythe/ScytheView.vue'
+import ScytheScoreCalculatorView from '../views/Scythe/ScytheScoreCalculatorView.vue'
 
 export const ScytheRoutes = {
     path: '/scythe',

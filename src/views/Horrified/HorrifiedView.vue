@@ -1,6 +1,6 @@
 <script setup>
     import { RouterLink, RouterView } from 'vue-router'
-    import ViewLayout from '../components/ViewLayout.vue'
+    import ViewLayout from '../../components/ViewLayout.vue'
 </script>
 
 <template>
