@@ -8,7 +8,6 @@ export const HorrifiedRoutes = {
     name: 'horrified',
     meta: { verbose: 'Horrified' },
     component: HorrifiedView,
-    alias: '',
     children: [
         { 
             path: 'characters', 
