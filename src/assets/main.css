@@ -17,3 +17,12 @@ body {
     font-weight: normal;
 }
 
+a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.router-link-exact-active {
+    color: #134e4a;
+}
