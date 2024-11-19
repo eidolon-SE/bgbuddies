@@ -5,7 +5,9 @@ import { routes } from './router'
 const router = useRouter()
 
 function changeGame(event) {
-    router.push(event.target.value)
+    if (event.target.value != 'null') {
+        router.push(event.target.value)
+    }
 }
 </script>
 
@@ -13,7 +15,7 @@ function changeGame(event) {
     <header class="main-header">
         <h1 class="heading">Board Game Buddies</h1>
         <select name="game" class="game-list" @change="changeGame">
-            <option value="/">Select a game...</option>
+            <option value="null">Select a game...</option>
             <option v-for="route in routes" :value="route.path">{{ route.meta.verbose }}</option>
         </select>
     </header>

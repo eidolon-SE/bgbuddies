@@ -7,7 +7,11 @@ import { RouterView } from 'vue-router'
         <slot name="nav"></slot>
     </nav>
     <main class="main">
-        <router-view />
+        <RouterView v-slot="{ Component }">
+            <KeepAlive>
+                <component :is="Component" />
+            </KeepAlive>
+        </RouterView>
     </main>
 </template>
 
@@ -20,6 +24,8 @@ import { RouterView } from 'vue-router'
 }
 
 .main {
-    background-color: #fff;
+    padding: 1rem;
+    overflow: hidden;
+    height: 100%;
 }
 </style>

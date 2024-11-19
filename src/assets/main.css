@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #494949;
+    background-color: #fff;
     font-family: 'Inter', sans-serif;
 }
 
@@ -25,4 +25,17 @@ a {
 
 .router-link-exact-active {
     color: #134e4a;
+}
+
+.button {
+    background-color: #1d4ed8;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.125rem;
+    border-radius: 0.5rem;
+}
+
+.button:hover, .button:active {
+    background-color: #1e40af;
 }
