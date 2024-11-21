@@ -15,12 +15,13 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .monster {
     background-color: #444;
     padding: 0.5rem 1.5rem;
     color: #fff;
     border-radius: 0.5rem;
+    line-height: 1.5;
 }
 
 .name {
@@ -28,7 +29,7 @@
 }
 
 .dracula {
-    background-color: #450a0a;
+    background-color: #7f1d1d;
 }
 
 .frankenstein {

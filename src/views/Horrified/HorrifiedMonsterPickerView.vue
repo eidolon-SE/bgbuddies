@@ -45,15 +45,6 @@
 </template>
 
 <style>
-.inputs {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
 .list {
     list-style-type: none;
     padding: 0;
