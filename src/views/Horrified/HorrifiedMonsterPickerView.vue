@@ -1,15 +1,24 @@
 <script setup>
     import { ref } from 'vue'
     import { shuffle } from '../../util'
+
+    import HorrifiedMonster from '../../components/HorrifiedMonster.vue'
+    import HorrifiedDraculaInfo from '../../components/HorrifiedDraculaInfo.vue'
+    import HorrifiedFrankensteinInfo from '../../components/HorrifiedFrankensteinInfo.vue'
+    import HorrifiedCreatureInfo from '../../components/HorrifiedCreatureInfo.vue'
+    import HorrifiedWolfmanInfo from '../../components/HorrifiedWolfmanInfo.vue'
+    import HorrifiedInvisibleInfo from '../../components/HorrifiedInvisibleInfo.vue'
+    import HorrifiedMummyInfo from '../../components/HorrifiedMummyInfo.vue'
+
     const numMons = ref(2)
     const picked = ref(false)
     const monsters = ref([
-        { name: 'Count Dracula', id: 1 },
-        { name: 'Frankenstein and Bride of Frankenstein', id: 2 },
-        { name: 'Creature from the Black Lagoon', id: 3 },
-        { name: 'The Wolfman', id: 4 },
-        { name: 'The Invisble Man', id: 5 },
-        { name: 'The Mummy', id: 6 }
+        { name: 'Count Dracula', id: 1, component: HorrifiedDraculaInfo, cls: 'dracula' },
+        { name: 'Frankenstein and Bride of Frankenstein', id: 2, component: HorrifiedFrankensteinInfo, cls: 'frankenstein' },
+        { name: 'Creature from the Black Lagoon', id: 3, component: HorrifiedCreatureInfo, cls: 'creature' },
+        { name: 'The Wolf Man', id: 4, component: HorrifiedWolfmanInfo, cls: 'wolfman' },
+        { name: 'The Invisble Man', id: 5, component: HorrifiedInvisibleInfo, cls: 'invisible' },
+        { name: 'The Mummy', id: 6, component: HorrifiedMummyInfo, cls: 'mummy' }
     ])
 
     function shuffleMonsters() {
@@ -26,11 +35,13 @@
         </div>
         <input type="button" class="button" @click="shuffleMonsters" value="Pick">
     </div>
-    <ul class="list" v-if="picked">
-        <TransitionGroup name="list">
-            <li v-for="n in numMons" class="monster" :key="monsters[n - 1].id">{{ monsters[n - 1].name }}</li>
-        </TransitionGroup>
-    </ul>
+    <Transition name="show-list">
+        <ul class="list" v-if="picked">
+            <TransitionGroup name="list">
+            <li v-for="n in numMons" :key="monsters[n - 1].id"><HorrifiedMonster :monster="monsters[n - 1]" /></li>
+            </TransitionGroup>
+        </ul>
+    </Transition>
 </template>
 
 <style>
@@ -51,22 +62,17 @@
     gap: 0.25rem;
 }
 
-.monster {
-    background-color: #444;
-    padding: 0.5rem 1.5rem;
-    color: #fff;
-    border-radius: 0.5rem;
-}
-
 
 .list-move, /* apply transition to moving elements */
 .list-enter-active,
-.list-leave-active {
+.list-leave-active,
+.show-list-enter-active{
   transition: all 0.5s ease;
 }
 
 .list-enter-from,
-.list-leave-to {
+.list-leave-to,
+.show-list-enter-from {
   opacity: 0;
   transform: translateX(30px);
 }

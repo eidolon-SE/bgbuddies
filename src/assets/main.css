@@ -28,7 +28,7 @@ a {
 }
 
 .button {
-    background-color: #1d4ed8;
+    background-color: #15803d;
     border: none;
     color: #fff;
     padding: 0.5rem 1.5rem;
@@ -37,5 +37,5 @@ a {
 }
 
 .button:hover, .button:active {
-    background-color: #1e40af;
+    background-color: #052e16;
 }
