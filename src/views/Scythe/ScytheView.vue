@@ -6,6 +6,7 @@
 <template>
     <ViewLayout>
         <template v-slot:nav>
+            <RouterLink :to="{ name: 'scythe_faction' }">Faction Picker</RouterLink>
             <RouterLink :to="{ name: 'scythe_scorecalc' }">Score Calculator</RouterLink>
         </template>
     </ViewLayout>

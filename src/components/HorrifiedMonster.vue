@@ -21,7 +21,6 @@
     padding: 0.5rem 1.5rem;
     color: #fff;
     border-radius: 0.5rem;
-    line-height: 1.5;
 }
 
 .name {
