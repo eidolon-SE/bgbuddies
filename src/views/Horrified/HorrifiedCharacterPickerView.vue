@@ -38,8 +38,5 @@
 </template>
 
 <style scoped>
-li {
-    transition: all 0.3s ease;
-}
 </style>
 
