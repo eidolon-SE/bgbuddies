@@ -38,39 +38,11 @@
     <Transition name="show-list">
         <ul class="list" v-if="picked">
             <TransitionGroup name="list">
-            <li v-for="n in numMons" :key="monsters[n - 1].id"><HorrifiedMonster :monster="monsters[n - 1]" /></li>
+                <li v-for="n in numMons" :key="monsters[n - 1].id"><HorrifiedMonster :monster="monsters[n - 1]" /></li>
             </TransitionGroup>
         </ul>
     </Transition>
 </template>
 
 <style>
-.list {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-
-.list-move, /* apply transition to moving elements */
-.list-enter-active,
-.list-leave-active,
-.show-list-enter-active{
-  transition: all 0.5s ease;
-}
-
-.list-enter-from,
-.list-leave-to,
-.show-list-enter-from {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
-.list-leave-active {
-  position: absolute;
-}
 </style>
