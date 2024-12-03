@@ -2,6 +2,8 @@
     import { ref } from 'vue'
     import { shuffle } from '../../util'
 
+    import RangeInput from '../../components/RangeInput.vue'
+
     import HorrifiedCharacter from '../../components/HorrifiedCharacter.vue'
 
     const numPlayers = ref(2)
@@ -24,8 +26,11 @@
 
 <template>
     <div class="inputs">
-        <label for="players">Number of players: </label>
-        <input type="number" v-model="numPlayers" min=1 max=5>
+        <div class="range-input">
+            <label for="players">Number of players: </label>
+            <RangeInput v-model="numPlayers" min=1 max=5 />
+        </div>
+
         <input type="button" class="button" value="Pick" @click="pick">
     </div>
     <Transition name="show-list">

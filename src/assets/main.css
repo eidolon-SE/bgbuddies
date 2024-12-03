@@ -77,3 +77,9 @@ a {
 .list-leave-active {
   position: absolute;
 }
+
+.range-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

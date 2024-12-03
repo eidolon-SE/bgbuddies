@@ -2,6 +2,8 @@
     import { ref } from 'vue'
     import { shuffle } from '../../util'
 
+    import RangeInput from '../../components/RangeInput.vue'
+
     import HorrifiedMonster from '../../components/HorrifiedMonster.vue'
     import HorrifiedDraculaInfo from '../../components/HorrifiedDraculaInfo.vue'
     import HorrifiedFrankensteinInfo from '../../components/HorrifiedFrankensteinInfo.vue'
@@ -21,7 +23,7 @@
         { name: 'The Mummy', id: 6, component: HorrifiedMummyInfo, cls: 'mummy' }
     ])
 
-    function shuffleMonsters() {
+    function pick() {
         picked.value = true
         shuffle(monsters.value)
     }
@@ -29,11 +31,11 @@
 
 <template>
     <div class="inputs">
-        <div>
+        <div class="range-input">
             <label for="num-mons">Number of monsters: </label>
-            <input id="num-mons" type="number" v-model="numMons" min=1 max=6>
+            <RangeInput v-model="numMons" min=1 max=6 />
         </div>
-        <input type="button" class="button" @click="shuffleMonsters" value="Pick">
+        <input type="button" class="button" @click="pick" value="Pick">
     </div>
     <Transition name="show-list">
         <ul class="list" v-if="picked">
@@ -44,5 +46,6 @@
     </Transition>
 </template>
 
-<style>
+<style scoped>
+
 </style>
