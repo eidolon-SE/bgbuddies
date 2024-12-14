@@ -18,8 +18,8 @@
         { id: 'polania', name: 'Republic of Polania' }
     ]
     const ifaFactions = [
-        { id: 'togawa', name: 'Togawa Shogunate' },
-        { id: 'albion', name: 'Clan Albion' }
+        { id: 'togawa', name: 'Togawa Shogunate*' },
+        { id: 'albion', name: 'Clan Albion*' }
     ]
     const basePlayerMats = [
         { name: 'Industrial', order: '1' },
@@ -29,8 +29,8 @@
         { name: 'Agricultural', order: '5' }
     ]
     const ifaPlayerMats = [
-        { name: 'Militant', order: '2.5' },
-        { name: 'Innovative', order: '3.5' }
+        { name: 'Militant*', order: '2.5' },
+        { name: 'Innovative*', order: '3.5' }
     ]
 
     const getMaxPlayers = computed(() => {
@@ -90,7 +90,7 @@
 <template>
     <div class="inputs">
         <div>
-            <label for="ifa-select">Invaders From Afar: </label>
+            <label for="ifa-select">Invaders From Afar (*): </label>
             <input id="ifa-select" type="checkbox" v-model="ifa" @change="adjustPlayers">
         </div>
         <div class="range-input">
@@ -104,7 +104,7 @@
             <TransitionGroup name="list">
                 <li v-for="n in result.length" :key="n">
                     <div class="player" :class="result[n - 1].cls">
-                        Player {{ n }}: {{ result[n - 1].faction }} - {{ result[n - 1].playerMat }}
+                        Player {{ n }}: <span class="faction">{{ result[n - 1].faction }}</span> - {{ result[n - 1].playerMat }}
                     </div>
                 </li>
             </TransitionGroup>
@@ -120,6 +120,10 @@
     border-radius: 0.5rem;
     transition: all 0.3s ease;
     border: 1px solid transparent;
+}
+
+.faction {
+    font-weight: bold;
 }
 
 .nordic {
