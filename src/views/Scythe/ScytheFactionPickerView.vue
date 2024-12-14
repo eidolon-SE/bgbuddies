@@ -52,6 +52,14 @@
         }
     }
 
+    function getFirstOrder() {
+        let orders = result.value.map((el) => {
+            return el.order
+        })
+
+        return Math.min(...orders)
+    }
+
     function pick() {
         let factions = getFactions()
         let playerMats = getPlayerMats()
@@ -105,6 +113,7 @@
                 <li v-for="n in result.length" :key="n">
                     <div class="player" :class="result[n - 1].cls">
                         Player {{ n }}: <span class="faction">{{ result[n - 1].faction }}</span> - {{ result[n - 1].playerMat }}
+                        <span v-if="result[n - 1].order == getFirstOrder()"><sup>1st</sup></span>
                     </div>
                 </li>
             </TransitionGroup>
