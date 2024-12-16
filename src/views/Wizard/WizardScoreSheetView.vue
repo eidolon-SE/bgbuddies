@@ -1,5 +1,6 @@
 <script setup>
     import { ref, onMounted } from 'vue'
+    import NameField from '../../components/NameField.vue'
 
     const grid = ref([])
 
@@ -21,7 +22,9 @@
         <input type="button" class="button" @click="initGrid" value="Reset">
     </div>
     <div class="score-grid">
-        <div v-for="n in 6" class="player-title">P{{ n }}</div>
+        <div v-for="n in 6" class="player-title">
+            <NameField />
+        </div>
         <template v-for="col in grid">
             <div v-for="cell in col">
                 <input type="number" v-model="cell.guess" class="guess">
@@ -40,9 +43,7 @@
     justify-content: center;
 }
 
-.player-title {
-    transform: rotate(-90deg);
-}
+
 
 input[type=number] {
     width: 3.5rem;

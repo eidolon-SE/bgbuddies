@@ -42,6 +42,10 @@ a {
     background-color: #052e16;
 }
 
+.button-sm {
+    font-size: 0.75rem;
+}
+
 .list {
     list-style-type: none;
     padding: 0;
