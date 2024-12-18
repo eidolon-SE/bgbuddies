@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { ref } from 'vue'
     import NameField from '../../components/NameField.vue'
     import RangeInput from '../../components/RangeInput.vue'
 
