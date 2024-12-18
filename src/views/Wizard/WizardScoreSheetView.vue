@@ -1,49 +1,79 @@
 <script setup>
     import { ref, onMounted } from 'vue'
     import NameField from '../../components/NameField.vue'
+    import RangeInput from '../../components/RangeInput.vue'
 
-    const grid = ref([])
+    const numPlayers = ref(3)
+    const playersData = ref([])
+    const numTurns = ref(0)
+    const currentTurn = ref(0)
+    const gameStarted = ref(false)
 
-    function initGrid() {
-        grid.value = []
-        for (let i = 0; i < 6; i++) {
-            grid.value.push([])
-            for (let j = 0; j < 15; j++) {
-                grid.value[i].push({ guess: 0, score: 0})   
-            }
+    function newGame() {
+        numTurns.value = 60 / numPlayers.value
+        currentTurn.value = 1
+        
+        playersData.value = []
+        for (let i = 0; i < numPlayers.value; i++) {
+            playersData.value.push({name: 'Player', guess: 0, tricks: 0, score: 0 })
         }
+
+        gameStarted.value = true
     }
 
-    onMounted(initGrid)
+    function nextTurn() {
+        if (currentTurn.value < numTurns.value) {
+            currentTurn.value++
+            playersData.value.forEach((el) => {
+                if (el.guess === el.tricks) {
+                    let score = 20 + (10 * el.tricks)
+                    el.score += score
+                } else {
+                    let score = 10 * (Math.max(el.guess, el.tricks) - Math.min(el.guess, el.tricks))
+                    el.score -= score
+                }
+            })
+        }
+    }
 </script>
 
 <template>
     <div class="inputs">
-        <input type="button" class="button" @click="initGrid" value="Reset">
-    </div>
-    <div class="score-grid">
-        <div v-for="n in 6" class="player-title">
-            <NameField />
+        <div class="range-input">
+            <label>Number of players: </label>
+            <RangeInput v-model="numPlayers" min=3 max=6 />
         </div>
-        <template v-for="col in grid">
-            <div v-for="cell in col">
-                <input type="number" v-model="cell.guess" class="guess">
-                <input type="number" v-model="cell.score" class="score">
-            </div>
-        </template>
+        <input type="button" class="button" @click="newGame()" value="New Game">
+    </div>
+    <div v-if="gameStarted" class="game">
+        <div>Turn {{ currentTurn }} / {{ numTurns }}</div>
+        <div class="score-grid">
+            <div class="grid-title">Players</div>
+            <div class="grid-title">Guess</div>
+            <div class="grid-title">Tricks</div>
+            <div class="grid-title">Total Score</div>
+            <template v-for="(data, index) in playersData" :key="index">
+                <NameField :initialName="data.name" />
+                <div><input type="number" v-model="data.guess"></div>
+                <div><input type="number" v-model="data.tricks"></div>
+                <div>{{ data.score }}</div>
+            </template>
+        </div>
+        <div class="inputs">
+            <button class="button" @click="nextTurn">End Turn</button>
+        </div>
     </div>
 </template>
 
 <style>
 .score-grid {
     display: grid;
-    grid-template-columns: repeat(6, max-content);
-    text-align: center;
-    column-gap: 0.75rem;
-    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
 }
 
-
+.grid-title {
+    font-weight: bold;
+}
 
 input[type=number] {
     width: 3.5rem;

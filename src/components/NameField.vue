@@ -1,9 +1,12 @@
 <script setup>
     import { ref } from 'vue'
-    const name = ref('Player')
+
+    const props = defineProps(['initialName'])
+
+    const name = ref(props.initialName)
     const showInput = ref(false)
 
-    function hide() {
+    function save() {
         if (name.value.match("^[A-Za-z0-9_]")) {
             showInput.value = false
         }
@@ -14,27 +17,30 @@
         <div @click="showInput = true">
             {{ name }}
         </div>
-        <div v-if="showInput" class="hidden">
-            <input type="text" v-model="name" patter="[A-za-z0-9_]">
-            <input type="button" class="button button-sm" value="Save" @click="hide">
+        <div v-if="showInput" class="modal">
+            <input type="text" v-model="name" pattern="[A-za-z0-9_]">
+            <input type="button" class="button" value="Save" @click="save">
         </div>
     </div>
 </template>
 
 <style scoped>
-.container {
-    position: relative;
-}
-
-.hidden {
+.modal {
     position: absolute;
     top: 0;
+    left: 0;
     z-index: 1;
-    display: flex;
     gap: 0.25rem;
+    height: 100%;
+    width: 100%;
+    background: #ffffffcc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 input[type=text] {
-    width: 5rem;
+    font-size: 1.5rem;
 }
 </style> 
