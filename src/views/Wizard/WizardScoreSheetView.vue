@@ -21,7 +21,7 @@
         gameStarted.value = true
     }
 
-    function nextTurn() {
+    function takeTurn() {
         if (currentTurn.value < numTurns.value) {
             currentTurn.value++
             playersData.value.forEach((el) => {
@@ -32,6 +32,9 @@
                     let score = 10 * (Math.max(el.guess, el.tricks) - Math.min(el.guess, el.tricks))
                     el.score -= score
                 }
+
+                el.guess = 0
+                el.tricks = 0
             })
         }
     }
@@ -54,13 +57,13 @@
             <div class="grid-title">Total Score</div>
             <template v-for="(data, index) in playersData" :key="index">
                 <NameField :initialName="data.name" />
-                <div><input type="number" v-model="data.guess"></div>
-                <div><input type="number" v-model="data.tricks"></div>
+                <div><input type="number" v-model="data.guess" min=0 :max="currentTurn"></div>
+                <div><input type="number" v-model="data.tricks" min=0 :max="currentTurn"></div>
                 <div>{{ data.score }}</div>
             </template>
         </div>
         <div class="inputs">
-            <button class="button" @click="nextTurn">End Turn</button>
+            <button class="button" @click="takeTurn">End Turn</button>
         </div>
     </div>
 </template>
