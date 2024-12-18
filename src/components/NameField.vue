@@ -18,8 +18,10 @@
             {{ name }}
         </div>
         <div v-if="showInput" class="modal">
-            <input type="text" v-model="name" pattern="[A-za-z0-9_]">
-            <input type="button" class="button" value="Save" @click="save">
+            <div class="modal-inner">
+                <input type="text" v-model="name" pattern="[A-za-z0-9_]">
+                <input type="button" class="button" value="Save" @click="save">
+            </div>
         </div>
     </div>
 </template>
@@ -40,7 +42,14 @@
 
 }
 
+.modal-inner {
+    margin: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
 input[type=text] {
     font-size: 1.5rem;
+    width: 10rem;
 }
 </style> 
