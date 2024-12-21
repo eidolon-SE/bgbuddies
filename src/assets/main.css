@@ -42,6 +42,10 @@ a {
     background-color: #052e16;
 }
 
+.button:disabled {
+    background-color: #555;
+}
+
 .button-sm {
     font-size: 0.75rem;
 }
