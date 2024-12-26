@@ -24,7 +24,7 @@ a {
     text-decoration: none;
 }
 
-.router-link-exact-active {
+.router-link-active {
     color: #134e4a;
 }
 

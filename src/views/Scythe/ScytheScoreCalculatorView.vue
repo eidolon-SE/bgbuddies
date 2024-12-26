@@ -1,7 +1,9 @@
 <script setup>
     import { ref, onMounted } from 'vue'
+    import { useRoute } from 'vue-router'
 
-    const numPlayers = ref(7)
+    const props = defineProps(['factions'])
+
     const playerData = ref([])
 
     function buildPlayerData() {
@@ -16,10 +18,10 @@
             })
         }
     }
-
-    onMounted(buildPlayerData)
 </script>
 
 <template>
-    {{ playerData }}
+    {{ factions }}
+    <div v-for="data in playerData">
+    </div>
 </template>

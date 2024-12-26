@@ -1,11 +1,12 @@
 <script setup>
     import { ref, computed } from 'vue'
+    import { useRouter } from 'vue-router'
 
     import { shuffle } from '../../util'
     import RangeInput from '../../components/RangeInput.vue'
     import ScythePlayerInfo from '../../components/ScythePlayerInfo.vue'
 
-
+    const router = useRouter()
     const ifa = ref(false)
     const numPlayers = ref(2)
     const picked = ref(false)
@@ -86,6 +87,16 @@
         picked.value = true
 
     }
+
+    function scoreCalc() {
+        let factionsList = []
+
+        result.value.forEach((el) => {
+            factionsList.push(el.cls)
+        })
+
+        router.push({ name: 'scythe_scorecalc', params: { factions: factionsList }})
+    }
 </script>
 <template>
     <div class="inputs">
@@ -100,15 +111,20 @@
         <input type="button" class="button" value="Pick" @click="pick">
     </div>
     <Transition name="show-list">
-        <ul class="list" v-if="picked">
-            <TransitionGroup name="list">
-                <li v-for="n in result.length" :key="n">
-                    <div class="player" :class="result[n - 1].cls">
-                        Player {{ n }}: <span class="faction">{{ result[n - 1].faction }}</span> - {{ result[n - 1].playerMat }}
-                    </div>
-                </li>
-            </TransitionGroup>
-        </ul>
+        <div v-if="picked">
+            <ul class="list">
+                <TransitionGroup name="list">
+                    <li v-for="n in result.length" :key="n">
+                        <div class="player" :class="result[n - 1].cls">
+                            Player {{ n }}: <span class="faction">{{ result[n - 1].faction }}</span> - {{ result[n - 1].playerMat }}
+                        </div>
+                    </li>
+                </TransitionGroup>
+            </ul>
+            <div class="inputs">
+                <button class="button" @click="scoreCalc">Score Calculator</button>
+            </div>
+        </div>
     </Transition>
 </template>
 
