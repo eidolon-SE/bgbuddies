@@ -15,7 +15,7 @@ export const ScytheRoutes = {
             alias: '',
         },
         {
-            path: 'score/:factions*',
+            path: 'score/:factionsParams*',
             props: true,
             component: ScytheScoreCalculatorView,
             name: 'scythe_scorecalc',

@@ -8,9 +8,7 @@ import { RouterView } from 'vue-router'
     </nav>
     <main class="main">
         <RouterView v-slot="{ Component }">
-            <KeepAlive>
-                <component :is="Component" />
-            </KeepAlive>
+            <component :is="Component" />
         </RouterView>
     </main>
 </template>

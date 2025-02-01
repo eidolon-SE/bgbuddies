@@ -75,7 +75,7 @@
             
             playerInfos.push({ 
                 faction: factions[i].name, 
-                cls: factions[i].id, 
+                id: factions[i].id, 
                 playerMat: playerMats[randomIndex].name,
                 order: playerMats[randomIndex].order
             })
@@ -92,10 +92,10 @@
         let factionsList = []
 
         result.value.forEach((el) => {
-            factionsList.push(el.cls)
+            factionsList.push(el.id)
         })
 
-        router.push({ name: 'scythe_scorecalc', params: { factions: factionsList }})
+        router.push({ name: 'scythe_scorecalc', params: { factionsParams: factionsList }})
     }
 </script>
 <template>
@@ -115,7 +115,7 @@
             <ul class="list">
                 <TransitionGroup name="list">
                     <li v-for="n in result.length" :key="n">
-                        <div class="player" :class="result[n - 1].cls">
+                        <div class="player" :class="result[n - 1].id">
                             Player {{ n }}: <span class="faction">{{ result[n - 1].faction }}</span> - {{ result[n - 1].playerMat }}
                         </div>
                     </li>
