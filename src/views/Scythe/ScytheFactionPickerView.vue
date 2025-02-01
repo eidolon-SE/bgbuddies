@@ -1,11 +1,12 @@
 <script setup>
     import { ref, computed } from 'vue'
+    import { useRouter } from 'vue-router'
 
     import { shuffle } from '../../util'
     import RangeInput from '../../components/RangeInput.vue'
     import ScythePlayerInfo from '../../components/ScythePlayerInfo.vue'
 
-
+    const router = useRouter()
     const ifa = ref(false)
     const numPlayers = ref(2)
     const picked = ref(false)
@@ -82,7 +83,7 @@
             
             playerInfos.push({ 
                 faction: factions[i].name, 
-                cls: factions[i].id, 
+                id: factions[i].id, 
                 playerMat: playerMats[randomIndex].name,
                 order: playerMats[randomIndex].order
             })
@@ -93,6 +94,16 @@
         result.value = playerInfos.slice(0, numPlayers.value)
         picked.value = true
 
+    }
+
+    function scoreCalc() {
+        let factionsList = []
+
+        result.value.forEach((el) => {
+            factionsList.push(el.id)
+        })
+
+        router.push({ name: 'scythe_scorecalc', params: { factionsParams: factionsList }})
     }
 </script>
 <template>
@@ -118,6 +129,10 @@
                 </li>
             </TransitionGroup>
         </ul>
+            <div class="inputs">
+                <button class="button" @click="scoreCalc">Score Calculator</button>
+            </div>
+        </div>
     </Transition>
 </template>
 
