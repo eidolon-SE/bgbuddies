@@ -119,16 +119,17 @@
         <input type="button" class="button" value="Pick" @click="pick">
     </div>
     <Transition name="show-list">
-        <ul class="list" v-if="picked">
-            <TransitionGroup name="list">
-                <li v-for="n in result.length" :key="n">
-                    <div class="player" :class="result[n - 1].cls">
-                        Player {{ n }}: <span class="faction">{{ result[n - 1].faction }}</span> - {{ result[n - 1].playerMat }}
-                        <span v-if="result[n - 1].order == getFirstOrder()"><sup>1st</sup></span>
-                    </div>
-                </li>
-            </TransitionGroup>
-        </ul>
+        <div v-if="picked">
+            <ul class="list">
+                <TransitionGroup name="list">
+                    <li v-for="n in result.length" :key="n">
+                        <div class="player" :class="result[n - 1].id">
+                            Player {{ n }}: <span class="faction">{{ result[n - 1].faction }}</span> - {{ result[n - 1].playerMat }}
+                            <span v-if="result[n - 1].order == getFirstOrder()"><sup>1st</sup></span>
+                        </div>
+                    </li>
+                </TransitionGroup>
+            </ul>
             <div class="inputs">
                 <button class="button" @click="scoreCalc">Score Calculator</button>
             </div>
