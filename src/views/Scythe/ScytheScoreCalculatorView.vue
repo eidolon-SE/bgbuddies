@@ -161,7 +161,7 @@
             el.total = el.coins + 
                 (el.stars * (2 + popModifier)) + 
                 (el.territories * (1 + popModifier)) +
-                ((el.resources / 2) * popModifier) +
+                (Math.floor(el.resources / 2) * popModifier) +
                 getStructureBonus(el.structures)
         })
     }
@@ -193,6 +193,7 @@
         </div>
     </section>
     <section v-if="factionsSet" class="flex">
+        <button class="button" @click="factionsSet = false">Reselect Factions</button>
         <section class="flex">
             <h2>Popularity</h2>
             <div>Enter each players popularity</div>
