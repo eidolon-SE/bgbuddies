@@ -53,7 +53,8 @@
     ]
 
     function buildPlayerData() {
-         pickedFactions.value.forEach((el) => {
+        playerData.value = []
+        pickedFactions.value.forEach((el) => {
             playerData.value.push({
                 faction: el,
                 popularity: 0,
@@ -69,6 +70,7 @@
 
     function pickFactions() {
         pickedFactions.value = []
+        console.log(pickedFactions.value)
 
         factions.value.forEach((el) => { 
             if (el.picked) {
