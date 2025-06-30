@@ -1,15 +1,12 @@
-import WizardView from '../views/Wizard/WizardView.vue'
-import WizardScoreSheetView from '../views/Wizard/WizardScoreSheetView.vue'
-
 export const WizardRoutes = {
     path: '/wizard',
     name: 'wizard',
     meta: { verbose: 'Wizard' },
-    component: WizardView,
+    component: () => import('../views/Wizard/WizardView.vue'),
     children: [
         {
             path: 'score',
-            component: WizardScoreSheetView,
+            component: () => import('..views/Wizard/WizardScoreSheetView'),
             name: 'wizard_score',
             alias: '',
         },

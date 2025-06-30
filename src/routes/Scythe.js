@@ -1,23 +1,19 @@
-import ScytheView from '../views/Scythe/ScytheView.vue'
-import ScytheScoreCalculatorView from '../views/Scythe/ScytheScoreCalculatorView.vue'
-import ScytheFactionPickerView from '../views/Scythe/ScytheFactionPickerView.vue'
-
 export const ScytheRoutes = {
     path: '/scythe',
     name: 'scythe',
     meta: { verbose: 'Scythe' },
-    component: ScytheView,
+    component: () => import('../views/Scythe/ScytheView.vue'),
     children: [
         {
             path: 'faction',
-            component: ScytheFactionPickerView,
+            component: () => import('../views/Scythe/ScytheFactionPickerView.vue'),
             name: 'scythe_faction',
             alias: '',
         },
         {
             path: 'score/:factionsParams*',
             props: true,
-            component: ScytheScoreCalculatorView,
+            component: () => import('../views/Scythe/ScytheScoreCalculatorView.vue'),
             name: 'scythe_scorecalc',
         },
     ]
