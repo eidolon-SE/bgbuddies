@@ -6,7 +6,7 @@ export const WizardRoutes = {
     children: [
         {
             path: 'score',
-            component: () => import('..views/Wizard/WizardScoreSheetView.vue'),
+            component: () => import('../views/Wizard/WizardScoreSheetView.vue'),
             name: 'wizard_score',
             alias: '',
         },
