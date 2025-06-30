@@ -3,14 +3,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { HorrifiedRoutes } from './routes/Horrified'
 import { MiscRoutes } from './routes/Misc'
 import { ScytheRoutes } from './routes/Scythe'
+import { StardewRoutes } from './routes/Stardew'
 import { WizardRoutes } from './routes/Wizard'
 
 
 export const routes = [
-    HorrifiedRoutes,
-    MiscRoutes,
-    ScytheRoutes,
-    WizardRoutes
+  HorrifiedRoutes,
+  MiscRoutes,
+  ScytheRoutes,
+  StardewRoutes,
+  WizardRoutes
 ]
 
 export const router = createRouter({
